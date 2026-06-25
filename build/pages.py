@@ -13,8 +13,14 @@ def build_index():
       <h1>Granite worktops,<br>fabricated &amp; fitted for<br><span class="roll" id="roll" data-words='["your kitchen.","your island.","your home.","real life."]'><span class="w">your kitchen.</span></span></h1>
       <p class="sub">We template, cut and install natural and engineered stone — one accountable team, a fixed price, and an install we never sub out.</p>
       <div class="hero-badges">
-        <div class="hero-badge"><span class="star">★★★★★</span> <b>{RATING}</b> <span class="muted" style="color:#cfccc4">({REVIEWS}) Google</span></div>
-        <div class="hero-badge"><span class="ck">✦</span> <b>Own workshop</b> <span style="color:#cfccc4">&amp; crews</span></div>
+        <div class="review-badge">
+          <span class="rb-ic">{GOOGLE_ICON}</span>
+          <span class="rb-txt"><span class="rb-top"><b>{RATING}</b> <span class="stars">★★★★★</span> <span class="rb-n">({REVIEWS})</span></span><span class="rb-lbl">Google Reviews</span></span>
+        </div>
+        <div class="review-badge">
+          <span class="rb-ic">{FB_ICON}</span>
+          <span class="rb-txt"><span class="rb-top"><b>{FB_RATING}</b> <span class="stars">★★★★★</span> <span class="rb-n">({FB_REVIEWS})</span></span><span class="rb-lbl">Facebook Reviews</span></span>
+        </div>
       </div>
       <ul class="hero-trust">
         <li><span class="ck">✓</span> Laser-templated for invisible seams &amp; perfect cut-outs</li>

@@ -204,10 +204,17 @@ section{position:relative}
 .hero h1 .roll .w{display:inline-block;animation:rollin .5s var(--ease)}
 @keyframes rollin{from{opacity:0;transform:translateY(.5em)}to{opacity:1;transform:none}}
 .hero .sub{color:#ddd9d0;font-size:clamp(1rem,1.5vw,1.18rem);max-width:46ch;margin:1.4rem 0 1.8rem;font-weight:300}
-.hero-badges{display:flex;gap:1.6rem;flex-wrap:wrap;margin-bottom:1.6rem}
-.hero-badge{display:flex;align-items:center;gap:.55rem;font-size:.84rem;color:#eceae3}
-.hero-badge b{font-family:'Jost';font-weight:500}
-.hero-badge .star{color:var(--gold-lt);letter-spacing:1px}
+.hero-badges{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.review-badge{display:flex;align-items:center;gap:.7rem;background:rgba(20,18,15,.5);
+  border:1px solid rgba(255,255,255,.16);padding:.6rem .95rem;backdrop-filter:blur(5px)}
+.rb-ic{width:30px;height:30px;flex:none;display:grid;place-items:center}
+.rb-ic svg{width:28px;height:28px;display:block}
+.rb-txt{display:flex;flex-direction:column;line-height:1.18}
+.rb-top{display:flex;align-items:center;gap:.4rem}
+.rb-top b{font-family:'Jost';font-weight:600;font-size:1rem;color:#fff}
+.rb-top .stars{color:#f5b942;font-size:.82rem;letter-spacing:1px}
+.rb-n{color:#c9c6bd;font-size:.8rem}
+.rb-lbl{font-size:.72rem;color:#bdbab1;letter-spacing:.02em}
 .hero-trust{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
 .hero-trust li{display:flex;gap:.6rem;align-items:flex-start;font-size:.9rem;color:#e6e3da}
 .hero-trust .ck{color:var(--gold-lt);flex:none;margin-top:2px}
