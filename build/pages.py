@@ -63,7 +63,7 @@ def build_index():
       <h2 class="h-xl">Owner-led. Local.<br>One team, start to finish.</h2>
       <div class="rule short"><span class="dot"></span></div>
       <p class="lead">GraniteFactory is the fabricator your neighbours recommend by name. We select the slab with you, template it with a laser, cut it in our own workshop, and our own crew fits it — no middlemen, no sub-contractors, no surprises.</p>
-      <p class="muted">Granite, quartz, marble and quartzite for kitchens, islands, vanities and outdoor bars across the {CITY}. One warranty, one point of contact, and a finish we put our name on.</p>
+      <p class="muted">Granite, quartz, marble and quartzite for kitchens, islands, vanities and outdoor bars across {REGION}. One warranty, one point of contact, and a finish we put our name on.</p>
       <div class="sign">
         <div class="av">GF</div>
         <div><b>The {CO} workshop</b><small>Templating · Fabrication · Installation</small></div>
@@ -246,7 +246,7 @@ def build_index():
   <div class="wrap area-grid">
     <div class="reveal">
       <span class="eyebrow">Where we work</span>
-      <h2 class="h-xl">Serving the {CITY}</h2>
+      <h2 class="h-xl">Serving {REGION}</h2>
       <p class="lead">Local crews across the metro. We template, fabricate and fit close to home — and we are still here when you need us years later.</p>
       <div class="chips">{chips}</div>
     </div>
@@ -273,11 +273,32 @@ def build_index():
   </div>
 </section>"""
 
+    # PARTNERS — trusted suppliers strip (right after hero)
+    PARTNERS = [
+        ("pg-bison","PG Bison"),("wood4u","Wood 4U"),("eeziquartz","EeziQuartz"),
+        ("sonae-arauco","Sonae Arauco"),("fhd","FHD — Fittings & Handle Distributors"),
+        ("national-edging","National Edging"),
+    ]
+    plogos = "".join(
+        f'<div class="partner reveal"><img src="assets/partners/{slug}.svg" alt="{nm}" loading="lazy"></div>'
+        for slug,nm in PARTNERS)
+    partners = f"""
+<section class="sec-tight partners-sec" id="partners">
+  <div class="wrap">
+    <div class="sec-head center reveal" style="text-align:center">
+      <span class="eyebrow">Our partners</span>
+      <h2 class="h-lg thin">Built on the best stone, board &amp; hardware suppliers</h2>
+      <p class="muted" style="max-width:60ch;margin-inline:auto">We fabricate with materials from the brands South African kitchens trust — so your worktop is backed by a supply chain as accountable as we are.</p>
+    </div>
+    <div class="partners-grid">{plogos}</div>
+  </div>
+</section>"""
+
     page = (head(f"{CO} | Granite &amp; Kitchen Countertop Installation in {CITY}",
-                 f"Owner-led granite, quartz and marble countertop fabrication and installation across the {CITY}. {RATING}/5 from {REVIEWS} reviews. Free in-home quotes — call {PHONE}.",
+                 f"Owner-led granite, quartz and marble countertop fabrication and installation across {REGION}. {RATING}/5 from {REVIEWS} reviews. Free in-home quotes — call {PHONE}.",
                  "home")
             + nav("home")
-            + hero + reviews + about + services + why + gallery
+            + hero + partners + reviews + about + services + why + gallery
             + process + financing + blog + faq + area + cta
             + footer())
     write("index.html", page)

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 64" font-family="Arial,Helvetica,sans-serif">
+  <circle cx="26" cy="32" r="11" fill="none" stroke="#1f4ea1" stroke-width="3"/>
+  <circle cx="26" cy="32" r="4" fill="#1f4ea1"/>
+  <text x="44" y="38" font-size="20" font-weight="800" letter-spacing="0"><tspan fill="#1f4ea1">NATIONAL</tspan> <tspan fill="#15356e">EDGING</tspan></text>
+</svg>

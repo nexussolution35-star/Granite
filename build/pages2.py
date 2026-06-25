@@ -42,7 +42,7 @@ def build_about():
     <h2 class="h-xl">Stone is all we do —<br>and we do all of it.</h2>
     <div class="rule short"><span class="dot"></span></div>
     <p class="lead">{CO} began in a single workshop unit with one belief: that a countertop is only as good as the people who template, cut and fit it. Fifteen years on, that has not changed. We still select every slab with the homeowner, still template with a laser, and still send our own crews to install.</p>
-    <p class="muted">No sales floor middlemen. No anonymous sub-contractors arriving in an unmarked van. Just one accountable team, one warranty, and a finish we sign our name to — across kitchens, islands, vanities and outdoor bars in the {CITY}.</p>
+    <p class="muted">No sales floor middlemen. No anonymous sub-contractors arriving in an unmarked van. Just one accountable team, one warranty, and a finish we sign our name to — across kitchens, islands, vanities and outdoor bars across {REGION}.</p>
     <a href="contact.html" class="btn btn-gold" style="margin-top:1rem">Book a free measure <span class="arr">→</span></a>
   </div>
   <div class="about-media reveal"><img src="assets/img/p049.jpg" alt="GraniteFactory kitchen"><div class="badge"><span class="n">{REVIEWS}</span><small>Kitchens fitted</small></div></div>
@@ -242,10 +242,10 @@ def build_contact():
 def build_areas():
     chips="".join(f'<div class="chip" style="cursor:default">{a}</div>' for a in AREAS)
     cards="".join(f'<div class="post-card reveal"><div class="media"><img src="assets/img/{im}.jpg" alt="{a}"></div><div class="body"><span class="meta">Service area</span><h3>{a}</h3><p class="muted">Granite, quartz &amp; marble countertops templated, fabricated and fitted in {a}.</p></div></div>' for a,im in zip(AREAS[:6],["p004","p011","p021","p023","p033","p055"]))
-    body = page_hero(f"Serving the {CITY}","Local crews, local fabrication. We template, cut and fit close to home — and we are still here years later.","p040","Service Areas") + f"""
+    body = page_hero(f"Serving {REGION}","Local crews, local fabrication. We template, cut and fit close to home — and we are still here years later.","p040","Service Areas") + f"""
 <section class="sec"><div class="wrap">
   <div class="area-grid">
-    <div class="reveal"><span class="eyebrow">Where we work</span><h2 class="h-xl">Across the whole metro</h2>
+    <div class="reveal"><span class="eyebrow">Where we work</span><h2 class="h-xl">Across the whole region</h2>
       <p class="lead">From the first measure to the final seal, every job is handled by our own team based right here. Find your area below — or call and we will confirm we cover you.</p>
       <div class="chips">{chips}</div>
       <a href="contact.html" class="btn btn-gold" style="margin-top:1.8rem">Book a free measure <span class="arr">→</span></a>
@@ -254,7 +254,7 @@ def build_areas():
   </div>
   <div class="blog-grid" style="margin-top:4rem">{cards}</div>
 </div></section>""" + mini_cta()
-    write("service-areas.html", head(f"Service Areas | {CO}",f"Granite and quartz countertop installation across the {CITY}.","areas")+nav("areas")+body+footer())
+    write("service-areas.html", head(f"Service Areas | {CO}",f"Granite and quartz countertop installation across {REGION}.","areas")+nav("areas")+body+footer())
 
 # ---------------------------------------------------------------- RUN
 if __name__ == "__main__":

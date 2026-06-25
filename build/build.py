@@ -8,12 +8,14 @@ OUT = "/home/user/Granite"
 
 # ---------------------------------------------------------------- brand
 CO      = "GraniteFactory"
-PHONE   = "(212) 555-0148"
-TEL     = "+12125550148"
-EMAIL   = "hello@granitefactory.com"
-ADDRESS = "1420 Stoneworks Avenue, Suite 6"
-CITY    = "Riverside Metro"
-HOURS   = "Mon–Fri 8:00–5:30 · Sat 9:00–2:00"
+PHONE   = "074 216 7873"
+TEL     = "+27742167873"
+EMAIL   = "designm37@gmail.com"
+ADDRESS = "2 Transnet Avenue, Eloff Estate, Capital Park"
+CITY    = "Pretoria"
+REGION  = "the Greater Pretoria area"
+POSTAL  = "Pretoria, South Africa, 0018"
+HOURS   = "Mon–Fri 8:00–5:00 · Sat 8:00–1:00"
 RATING  = "4.9"
 REVIEWS = "168"
 
@@ -41,8 +43,8 @@ COLLECTIONS = [  # (label, percent, blurb)
     ("Quartzite", 81, "Natural stone with the durability of granite and the look of marble."),
 ]
 
-AREAS = ["Riverside", "Oakwood", "Highgrove", "Kingsley Park",
-         "Fairview", "Lakemont", "Westcliff", "Stonebridge"]
+AREAS = ["Capital Park", "Villieria", "Gezina", "Queenswood",
+         "Waverley", "Brooklyn", "Menlo Park", "Centurion"]
 
 GALLERY = [  # (img, caption, css-modifier)
     ("p004", "Charcoal island · honed granite", "tall"),
@@ -62,9 +64,9 @@ GALLERY = [  # (img, caption, css-modifier)
 ]
 
 TESTIMONIALS = [
-    ("The template-to-install timeline was exactly what they promised. Seam placement on our island is invisible — you have to be told where it is.", "The Harveys", "Granite kitchen · Oakwood"),
-    ("We priced three fabricators. GraniteFactory were the only ones who templated with a laser and walked us through the slab in person before cutting.", "Priya & Sam", "Quartz island · Highgrove"),
-    ("Old laminate gone in a morning, stone in by afternoon, and they vacuumed the place spotless. The crew clearly does this every single day.", "M. Okonkwo", "Vanity + kitchen · Riverside"),
+    ("The template-to-install timeline was exactly what they promised. Seam placement on our island is invisible — you have to be told where it is.", "The Harveys", "Granite kitchen · Waterkloof"),
+    ("We priced three fabricators. GraniteFactory were the only ones who templated with a laser and walked us through the slab in person before cutting.", "Priya & Sam", "Quartz island · Brooklyn"),
+    ("Old laminate gone in a morning, stone in by afternoon, and they vacuumed the place spotless. The crew clearly does this every single day.", "M. Okonkwo", "Vanity + kitchen · Capital Park"),
 ]
 
 FAQS = [
@@ -94,7 +96,7 @@ def head(title, desc, active, depth=0, page_css=""):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{pre}assets/styles.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231b1b1d'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='20' font-weight='bold' fill='%23c0892d' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="{pre}assets/logo-emblem.svg">
 <script>document.documentElement.className+=' js';</script>
 {page_css}</head>
 <body>
@@ -107,6 +109,7 @@ def nav(active, depth=0):
         f'<a href="{pre}services/{s}.html">{t}</a>' for s,t,_,_ in SERVICES
     )
     links = [
+        ("home", f"{pre}index.html", "Home"),
         ("about", f"{pre}about.html", "About"),
         ("services", f"{pre}services.html", "Services"),
         ("gallery", f"{pre}gallery.html", "Gallery"),
@@ -115,8 +118,7 @@ def nav(active, depth=0):
         ("blog", f"{pre}blog.html", "Journal"),
         ("contact", f"{pre}contact.html", "Contact"),
     ]
-    mob = "".join(f'<a href="{u}">{t}</a>' for _,u,t in
-                  [("home",f"{pre}index.html","Home")]+links)
+    mob = "".join(f'<a href="{u}">{t}</a>' for _,u,t in links)
     nav_li = ""
     for key,u,t in links:
         if key == "services":
@@ -124,6 +126,13 @@ def nav(active, depth=0):
                        f'<div class="drop">{svc_links}<a href="{pre}services.html">All Services →</a></div></li>')
         else:
             nav_li += f'<li><a href="{u}"{cls(key)}>{t}</a></li>'
+    brand = f"""<a href="{pre}index.html" class="brand" aria-label="{CO} — Countertops & Installation">
+      <img class="brand-mark" src="{pre}assets/logo-emblem.svg" alt="" width="46" height="46">
+      <span class="brand-txt">
+        <span class="brand-word"><span class="b1">Granite</span><span class="b2">Factory</span></span>
+        <span class="brand-sub">Countertops &amp; Installation</span>
+      </span>
+    </a>"""
     return f"""<div class="topbar"><div class="wrap">
   <div class="tb-l"><span class="star">★</span> {RATING} / 5 · {REVIEWS} verified reviews</div>
   <div class="tb-r">
@@ -134,13 +143,12 @@ def nav(active, depth=0):
 </div></div>
 <header class="site-head" id="head">
   <div class="wrap nav">
-    <a href="{pre}index.html" class="brand" aria-label="{CO} home">
-      <span class="b1">Granite</span><span class="b2">Factory</span><span class="dot">.</span>
-    </a>
+    {brand}
     <nav><ul class="nav-links">{nav_li}</ul></nav>
     <div class="nav-cta">
-      <span class="nav-phone">Call <a href="tel:{TEL}"><span>{PHONE}</span></a></span>
-      <a href="{pre}contact.html" class="btn btn-gold">Free Quote</a>
+      <span class="avail"><i class="pulse"></i> We're Available Now</span>
+      <a href="tel:{TEL}" class="nav-phone"><span>{PHONE}</span></a>
+      <a href="{pre}contact.html" class="btn btn-gold est">Get My Free Estimate</a>
     </div>
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -156,8 +164,12 @@ def footer(depth=0):
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="brand"><span class="b1">Granite</span><span class="b2">Factory</span><span class="dot">.</span></div>
-        <p>Countertops &amp; installation, done by one accountable team. We template, fabricate and fit natural and engineered stone across the {CITY} — and we never sub out the install.</p>
+        <a href="{pre}index.html" class="brand foot-brand">
+          <img class="brand-mark" src="{pre}assets/logo-emblem.svg" alt="" width="44" height="44">
+          <span class="brand-txt"><span class="brand-word"><span class="b1">Granite</span><span class="b2">Factory</span></span>
+          <span class="brand-sub">Countertops &amp; Installation</span></span>
+        </a>
+        <p>Countertops &amp; installation, done by one accountable team. We template, fabricate and fit natural and engineered stone across {REGION} — and we never sub out the install.</p>
         <div class="soc">
           <a href="#" aria-label="Facebook">f</a>
           <a href="#" aria-label="Instagram">◎</a>
@@ -169,7 +181,7 @@ def footer(depth=0):
       <div><h4>Service Areas</h4>{areas}<a href="{pre}service-areas.html">All areas →</a></div>
       <div>
         <h4>Visit / Contact</h4>
-        <a href="https://maps.google.com" target="_blank" rel="noopener">{ADDRESS}<br>{CITY}</a>
+        <a href="https://maps.google.com/?q={ADDRESS.replace(' ','+')}+Pretoria" target="_blank" rel="noopener">{ADDRESS}<br>{POSTAL}</a>
         <a href="tel:{TEL}">{PHONE}</a>
         <a href="mailto:{EMAIL}">{EMAIL}</a>
         <p style="margin-top:.8rem">{HOURS}</p>

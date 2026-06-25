@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 64" font-family="Arial,Helvetica,sans-serif">
+  <g stroke-width="5" fill="none" stroke-linejoin="round">
+    <path d="M92 8 L104 30 L116 8" stroke="#b03a2e"/>
+    <path d="M104 8 L116 30 L128 8" stroke="#8a8d8f"/>
+  </g>
+  <text x="70" y="54" font-size="20" font-weight="800" letter-spacing="2"><tspan fill="#6b6e70">WOOD</tspan><tspan fill="#b03a2e">4U</tspan></text>
+</svg>
