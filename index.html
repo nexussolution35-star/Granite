@@ -480,6 +480,33 @@
   </div>
 </footer>
 <div class="callbar"><a href="tel:+27742167873">Call Now</a><a href="contact.html">Free Quote</a></div>
+<!-- placeholder chat widget -->
+<div class="chat" id="chat" data-phone="074 216 7873" data-tel="+27742167873">
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Chat with GraniteFactory">
+    <div class="chat-head">
+      <div class="chat-id"><span class="chat-ava">GF</span>
+        <div><b>GraniteFactory</b><small><i class="dot"></i> Typically replies in a few minutes</small></div></div>
+      <button class="chat-close" id="chatClose" aria-label="Close chat">×</button>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="chat-msg bot">Hi 👋 Thanks for visiting GraniteFactory. How can we help with your countertop project?</div>
+      <div class="chat-quick" id="chatQuick">
+        <button type="button">Get a free quote</button>
+        <button type="button">Book a measure</button>
+        <button type="button">Granite vs quartz?</button>
+      </div>
+    </div>
+    <form class="chat-input" id="chatForm" autocomplete="off">
+      <input type="text" placeholder="Type a message…" aria-label="Your message">
+      <button type="submit" aria-label="Send">➤</button>
+    </form>
+    <div class="chat-note">Demo widget — connect WhatsApp, Messenger or a live-chat tool to go live.</div>
+  </div>
+  <button class="chat-fab" id="chatFab" aria-label="Open chat">
+    <svg class="i-bub" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 9 9 0 0 1-4-1L3 20l1-4.5a8.38 8.38 0 0 1-1-4A8.5 8.5 0 0 1 21 11.5z"/></svg>
+    <span class="chat-fab-x">×</span>
+  </button>
+</div>
 <div class="lb" id="lb"><span class="x" id="lbx">×</span><span class="nav-a prev" id="lbp">‹</span><img id="lbi" alt=""><span class="nav-a next" id="lbn">›</span></div>
 <script>
 (function(){
@@ -524,11 +551,30 @@
   // parallax hero
   var pb=document.querySelector('.hero-bg img');
   if(pb)addEventListener('scroll',function(){pb.style.transform='scale(1.06) translateY('+(scrollY*.12)+'px)'});
-  // form stub
-  document.querySelectorAll('form').forEach(function(f){f.addEventListener('submit',function(e){
-    e.preventDefault();
-    f.innerHTML='<div style="padding:2rem 0;text-align:center"><div style="font-family:Jost;font-size:1.6rem;font-weight:300;margin-bottom:.4rem">Thank you.</div><p style="opacity:.8;margin:0">Your request is in. This is a front-end build — connect the form to your CRM or email handler to receive submissions.</p></div>';
-  });});
+  // form stub (skip the chat input form)
+  document.querySelectorAll('form').forEach(function(f){
+    if(f.id==='chatForm')return;
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      f.innerHTML='<div style="padding:2rem 0;text-align:center"><div style="font-family:Jost;font-size:1.6rem;font-weight:300;margin-bottom:.4rem">Thank you.</div><p style="opacity:.8;margin:0">Your request is in. This is a front-end build — connect the form to your CRM or email handler to receive submissions.</p></div>';
+    });
+  });
+  // placeholder chat widget
+  var chat=document.getElementById('chat');
+  if(chat){
+    var fab=document.getElementById('chatFab'),cls=document.getElementById('chatClose'),
+        body=document.getElementById('chatBody'),form=document.getElementById('chatForm'),
+        phone=chat.dataset.phone;
+    function toggle(){chat.classList.toggle('open');if(chat.classList.contains('open')){var i=form.querySelector('input');if(i)setTimeout(function(){i.focus();},200);}}
+    fab.addEventListener('click',toggle);
+    if(cls)cls.addEventListener('click',function(){chat.classList.remove('open');});
+    function add(text,who){var d=document.createElement('div');d.className='chat-msg '+who;d.textContent=text;body.appendChild(d);body.scrollTop=body.scrollHeight;}
+    function reply(){var t=document.createElement('div');t.className='chat-msg bot typing';t.innerHTML='<span></span><span></span><span></span>';body.appendChild(t);body.scrollTop=body.scrollHeight;
+      setTimeout(function(){t.remove();add('Thanks! A team member will be right with you. For an instant answer, call '+phone+' or tap “Free Quote”.','bot');},900);}
+    var quick=document.getElementById('chatQuick');
+    if(quick)quick.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){add(b.textContent,'user');quick.style.display='none';reply();});});
+    form.addEventListener('submit',function(e){e.preventDefault();var i=form.querySelector('input');var v=(i.value||'').trim();if(!v)return;add(v,'user');i.value='';if(quick)quick.style.display='none';reply();});
+  }
 })();
 </script>
 </body></html>

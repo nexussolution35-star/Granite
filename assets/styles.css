@@ -478,3 +478,58 @@ html.js .reveal.in{opacity:1;transform:none}
 .article img{margin:2rem 0;width:100%}
 .article blockquote{border-left:3px solid var(--gold);padding:.4rem 0 .4rem 1.4rem;margin:1.6rem 0;
   font-family:'Jost';font-weight:300;font-size:1.3rem;color:var(--ink)}
+
+/* ====================== PLACEHOLDER CHAT WIDGET ====================== */
+.chat{position:fixed;right:22px;bottom:22px;z-index:120;font-family:'Inter',sans-serif}
+.chat-fab{position:relative;width:60px;height:60px;border-radius:50%;border:0;cursor:pointer;
+  background:var(--gold);color:#fff;box-shadow:0 14px 30px -10px rgba(192,137,45,.7);
+  display:grid;place-items:center;transition:.4s var(--ease);margin-left:auto}
+.chat-fab:hover{transform:translateY(-3px);background:var(--gold-deep)}
+.chat-fab .chat-fab-x{position:absolute;font-size:1.7rem;line-height:1;font-weight:300;opacity:0;transform:scale(.5);transition:.3s}
+.chat-fab .i-bub{transition:.3s}
+.chat.open .chat-fab .i-bub{opacity:0;transform:scale(.5)}
+.chat.open .chat-fab .chat-fab-x{opacity:1;transform:scale(1)}
+/* unread ping dot */
+.chat-fab::after{content:"";position:absolute;top:-2px;right:-2px;width:14px;height:14px;border-radius:50%;
+  background:#22c55e;border:2px solid #fff;transition:.3s}
+.chat.open .chat-fab::after{opacity:0}
+
+.chat-panel{position:absolute;right:0;bottom:74px;width:340px;max-width:calc(100vw - 32px);
+  background:#fff;border:1px solid var(--line);box-shadow:0 30px 70px -24px rgba(20,18,14,.55);
+  display:flex;flex-direction:column;overflow:hidden;
+  opacity:0;visibility:hidden;transform:translateY(14px) scale(.98);transform-origin:bottom right;
+  transition:.34s var(--ease)}
+.chat.open .chat-panel{opacity:1;visibility:visible;transform:none}
+.chat-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  background:var(--ink);color:#fff;padding:1rem 1.1rem}
+.chat-id{display:flex;align-items:center;gap:.7rem}
+.chat-ava{width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;
+  display:grid;place-items:center;font-family:'Jost';font-weight:600;font-size:.95rem;flex:none}
+.chat-id b{font-family:'Jost';font-weight:500;font-size:.98rem;display:block}
+.chat-id small{font-size:.74rem;color:#cfccc4;display:flex;align-items:center;gap:.35rem}
+.chat-id small .dot{width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block}
+.chat-close{background:none;border:0;color:#cfccc4;font-size:1.5rem;line-height:1;cursor:pointer;padding:0 .2rem}
+.chat-close:hover{color:#fff}
+.chat-body{padding:1.1rem;display:flex;flex-direction:column;gap:.6rem;max-height:340px;overflow-y:auto;
+  background:var(--paper)}
+.chat-msg{max-width:84%;padding:.65rem .85rem;font-size:.86rem;line-height:1.45;border-radius:14px}
+.chat-msg.bot{background:#fff;border:1px solid var(--line);color:var(--ink-soft);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-msg.user{background:var(--ink);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-msg.typing{display:flex;gap:4px;align-items:center}
+.chat-msg.typing span{width:6px;height:6px;border-radius:50%;background:var(--stone-2);animation:typing 1s infinite}
+.chat-msg.typing span:nth-child(2){animation-delay:.15s}.chat-msg.typing span:nth-child(3){animation-delay:.3s}
+@keyframes typing{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.chat-quick{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.2rem}
+.chat-quick button{background:#fff;border:1px solid var(--gold);color:var(--gold-deep);
+  font-family:'Jost';font-size:.76rem;letter-spacing:.02em;padding:.45rem .8rem;border-radius:20px;cursor:pointer;transition:.3s}
+.chat-quick button:hover{background:var(--gold);color:#fff}
+.chat-input{display:flex;align-items:center;gap:.5rem;padding:.7rem;border-top:1px solid var(--line);background:#fff}
+.chat-input input{flex:1;border:0;outline:0;font-family:inherit;font-size:.88rem;padding:.5rem .6rem;background:transparent;color:var(--ink)}
+.chat-input button{flex:none;width:38px;height:38px;border-radius:50%;border:0;background:var(--gold);color:#fff;cursor:pointer;font-size:.9rem;transition:.3s}
+.chat-input button:hover{background:var(--gold-deep)}
+.chat-note{font-size:.68rem;color:var(--stone);text-align:center;padding:.5rem .7rem;background:var(--paper-2)}
+@media(max-width:760px){
+  .chat{bottom:64px;right:16px}            /* clear the sticky mobile call bar */
+  .chat-fab{width:54px;height:54px}
+  .chat-panel{bottom:66px}
+}
